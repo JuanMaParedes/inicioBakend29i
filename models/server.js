@@ -1,16 +1,28 @@
 const express = require("express");
+const {dbConnection} = require('../database/confing')
 class Server{
     constructor(){
         this.app = express();
         this.port= process.env.PORT;
         this.usuariosPath='/api/usuarios';
+        //conexion DB
+        this.conectarDB();
+         //middlewares
+        this.middlewares();
         //routes
         this.routes();
-        //middlewares
-        this.middlewares();
+       
+    }
+
+    async conectarDB(){
+        await dbConnection();
+    
     }
 
     middlewares(){
+        //Lectura de body
+        this.app.use(express.json());
+
         //carpeta publica
         this.app.use(express.static("public"));
     }
