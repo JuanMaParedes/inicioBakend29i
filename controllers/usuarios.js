@@ -77,10 +77,12 @@ const usuariosDelete= async(req, res)=> {
 
     //borrar fisicamente un registro
     //const usuarioBorrado= await Usuario.findByIdAndDelete(id);
+    //const usuarioAutenticado= req.usuario;
 
     res.json({
     msg:'Usuario borrado de la base de datos',
     usuarioBorrado,
+   // usuarioAutenticado,
 }); 
 }
 
